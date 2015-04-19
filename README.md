@@ -1,4 +1,4 @@
-# Ludum-Dare-Text-Based-Game
+# Random Fighter
 My text based Ludum Dare game
 
 
