@@ -25,20 +25,26 @@ namespace LudumDareTextBasedGame
             "You are ambushed by five little monkeys!"
                 , "An unicorn blocks the path!"
                 , "A crazy sysadmin tries to choke you with a CAT 5e calbe!"
-                , "An open source enthousiast tries to confince you of the benefits of the GPLv3+ license" 
-                , "A Pokémon trainer challenges you to a battle!"};
+                , "An open source enthousiast tries to confince you of the benefits of the GPLv3+ license!" 
+                , "A Pokémon trainer challenges you to a battle!"
+                , "A console peasant attempts to hit you with his old PS1!"
+                , "An exhausted Ludum Dare programmer tries to eat you, muthering \"Don't fight me delicious pizza\"!"};
         public static string[] eventTargetNames = new string[] { 
             "the five little monkeys"
             , "the unicorn"
             , "the crazy sysadmin" 
             , "the open source enthousiast"
-            , "the Pokémon trainer"};
+            , "the Pokémon trainer"
+            , "the console peasant"
+            , "the exhausted programmer"};
         public static string[] eventAttackNames = new string[] { 
             "The monkeys are throwing nuts at you!"
                 , "The unicorn blinds you with his majesty."
                 , "The crazy sysadmin still tries to choke you with a CAT 5e cable!"
                 , "The open source enthousiast bores you with his arguments"
-                , "The Pokémon trainer commands his Pikachu to electrocute you!"};
+                , "The Pokémon trainer commands his Pikachu to electrocute you!"
+                , "The console peasant hits you again, stating that \"A console has a better cinematic experience\""
+                , "The exhausted programmer bites you, while muttering something about being hungry."};
 
         public static void Main(string[] args)
         {
