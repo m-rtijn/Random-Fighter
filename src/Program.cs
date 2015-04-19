@@ -28,7 +28,7 @@ namespace LudumDareTextBasedGame
                 , "An open source enthousiast tries to confince you of the benefits of the GPLv3+ license!" 
                 , "A Pokémon trainer challenges you to a battle!"
                 , "A console peasant attempts to hit you with his old PS1!"
-                , "An exhausted Ludum Dare programmer tries to eat you, muthering \"Don't fight me delicious pizza\"!"};
+                , "An exhausted Ludum Dare programmer tries to eat you, muttering \"Don't fight me delicious pizza\"!"};
         public static string[] eventTargetNames = new string[] { 
             "the five little monkeys"
             , "the unicorn"
