@@ -15,13 +15,15 @@ namespace LudumDareTextBasedGame
         // I stil need to come up with one
         private static string gameTitle = "TO DO: add game title";
         private static Player player;
-        public static string[] eventTexts = new string[] { "You are ambushed by five little monkeys!", "An unicorn blocks the path!", "A crazy sysadmin tries to choke you with a CAT 5e calbe!" };
-        public static string[] eventTargetNames = new string[] { "the five little monkeys", "the unicorn", "the crazy sysadmin" };
-        public static string[] eventAttackNames = new string[] { "The monkeys are throwing nuts at you!", "The unicorn blinds you with his majesty.", "The crazy sysadmin still tries to choke you with a CAT 5e cable!"};
         public static Event currentEvent;
         public static Random random = new Random();
         private static int dmgResult;
         private static int currentSeed;
+
+        // These are all the available scenario's
+        public static string[] eventTexts = new string[] { "You are ambushed by five little monkeys!", "An unicorn blocks the path!", "A crazy sysadmin tries to choke you with a CAT 5e calbe!" };
+        public static string[] eventTargetNames = new string[] { "the five little monkeys", "the unicorn", "the crazy sysadmin" };
+        public static string[] eventAttackNames = new string[] { "The monkeys are throwing nuts at you!", "The unicorn blinds you with his majesty.", "The crazy sysadmin still tries to choke you with a CAT 5e cable!"};
 
         public static void Main(string[] args)
         {
