@@ -13,7 +13,7 @@ namespace LudumDareTextBasedGame
         #region Main game things and main game loop
 
         // I stil need to come up with one
-        private static string gameTitle = "TO DO: add game title";
+        private static string gameTitle = "Random Fighter";
         private static Player player;
         public static Event currentEvent;
         public static Random random = new Random();
