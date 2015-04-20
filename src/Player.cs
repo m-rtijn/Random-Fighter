@@ -46,7 +46,7 @@ namespace LudumDareTextBasedGame
         public void GetDamage(int dmg)
         {
             health -= dmg;
-            Console.WriteLine("Oh no! You got " + dmg.ToString() + " damage.");
+            Console.WriteLine("Oh no! You recieved " + dmg.ToString() + " damage.");
         }
     }
 }
