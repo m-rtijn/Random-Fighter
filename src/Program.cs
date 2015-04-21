@@ -206,11 +206,11 @@ namespace LudumDareTextBasedGame
         /// <returns>Damage done</returns>
         public static Tuple<bool, int> TryAttack(string InputWeapon)
         {
-            foreach (string _weapon in player.weapons)
+            foreach (string loopWeapon in player.weapons)
             {
-                if (InputWeapon == _weapon)
+                if (InputWeapon == loopWeapon)
                 {
-                    return Tuple.Create(true, player.DoMove(_weapon));
+                    return Tuple.Create(true, player.DoMove(loopWeapon));
                 }
                 else
                 {
@@ -242,8 +242,9 @@ namespace LudumDareTextBasedGame
                 {
                     Console.WriteLine("\nAvailible Weapons:");
 
-                    foreach (string _weapon in player.weapons) {
-                        Console.WriteLine(_weapon);
+                    foreach (string loopWeapon in player.weapons)
+                    {
+                        Console.WriteLine(loopWeapon);
                     }
 
                     Console.WriteLine();
