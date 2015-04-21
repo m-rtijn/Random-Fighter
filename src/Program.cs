@@ -18,6 +18,7 @@ namespace LudumDareTextBasedGame
         private static int currentSeed;
 
         #region Scenarios, target names, and attack names
+
         // These are all the available scenario's
         public static string[] eventTexts = new string[] { 
             "You are ambushed by five little monkeys!",
@@ -43,6 +44,7 @@ namespace LudumDareTextBasedGame
             "The Pokémon trainer commands his Pikachu to electrocute you!",
             "The console peasant hits you again, stating that \"A console has a better cinematic experience\"",
             "The exhausted programmer bites you, while muttering something about being hungry."};
+
         #endregion
 
         public static void Main(string[] args)
@@ -350,23 +352,6 @@ namespace LudumDareTextBasedGame
             Console.ReadLine();
             Environment.Exit(0);
         }
-        #endregion
-
-        #region other things
-        /*
-        public static void Output(string msg, bool enter = true)
-        {
-            Thread.Sleep(250);
-            if (enter == true)
-            {
-                Console.WriteLine(msg);
-            }
-            else
-            {
-                Console.Write(msg);
-            }
-        }
-        */
         #endregion
     }
 }
