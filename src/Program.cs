@@ -59,7 +59,7 @@ namespace LudumDareTextBasedGame
             player = new Player(name, weapon);
 
             Console.WriteLine("You are walking on a path in a magical forest.");
-            GenEvent();
+            GenerateEvent();
 
             while (true)
             {
@@ -76,7 +76,7 @@ namespace LudumDareTextBasedGame
             switch(choice.ToLower())
             {
                 case "1":
-                    GenEvent();
+                    GenerateEvent();
                     break;
                 case "2":
                     BuyNewWeapon();
@@ -128,7 +128,7 @@ namespace LudumDareTextBasedGame
         /// <summary>
         /// Generates a new event
         /// </summary>
-        public static void GenEvent()
+        public static void GenerateEvent()
         {
             // Create a seed
             int seed = random.Next(0, eventTexts.Length);
