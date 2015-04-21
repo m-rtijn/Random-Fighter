@@ -255,6 +255,7 @@ namespace LudumDareTextBasedGame
 
                     if (AttackTry.Item1)
                     {
+                        dmg = AttackTry.Item2;
                         attackDone = true;
                     }
                     else
