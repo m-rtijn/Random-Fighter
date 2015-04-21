@@ -27,8 +27,8 @@ namespace LudumDareTextBasedGame
         /// let the target get dmg
         /// </summary>
         /// <param name="dmg"></param>
-        /// <returns>0 if dead 1 if still alive</returns>
-        public int GetDamage(int dmg, string weapon)
+        /// <returns>false if dead true if alive</returns>
+        public bool GetDamage(int dmg, string weapon)
         {
             targetHealth -= dmg;
             Console.WriteLine("You hit " + targetName + " with " + weapon);
@@ -37,12 +37,12 @@ namespace LudumDareTextBasedGame
             if (targetHealth <= 0)
             {
                 Console.WriteLine("You killed " + targetName);
-                return 0;
+                return false;
             }
             else
             {
                 Console.WriteLine(targetName + " still has " + targetHealth.ToString() + " health left.");
-                return 1;
+                return true;
             }
         }
     }

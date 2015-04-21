@@ -17,7 +17,7 @@ namespace LudumDareTextBasedGame
         private static Player player;
         public static Event currentEvent;
         public static Random random = new Random();
-        private static int dmgResult;
+        private static bool dmgResult;
         private static int currentSeed;
 
         // These are all the available scenario's
@@ -138,15 +138,19 @@ namespace LudumDareTextBasedGame
             currentSeed = seed;
 
             currentEvent = new Event(eventTexts[seed], player.xp * random.Next(1, 5), eventTargetNames[seed]);
-            GetInput();
+            GetInput(false);
         }
 
         /// <summary>
         /// Get input
         /// </summary>
-        public static void GetInput()
+        /// <param name="attack">if the player gets attacked or not</param>
+        public static void GetInput(bool attack)
         {
-            GetAttacked();
+            if (attack == true)
+            {
+                GetAttacked();
+            }
             CheckDead();
             Console.WriteLine("What do you want to do? \n 1) Attack \n 2) Get player status \n 3) Get target status");
             Console.Write(">");
@@ -165,10 +169,9 @@ namespace LudumDareTextBasedGame
                     break;
                 default:
                     Console.WriteLine("Please enter the number of the option.");
-                    GetInput();
+                    GetInput(false);
                     break;
             }
-
         }
 
         /// <summary>
@@ -181,7 +184,7 @@ namespace LudumDareTextBasedGame
 
             if (i == 1)
             {
-                GetInput();
+                GetInput(false);
             }
             if (i == 2)
             {
@@ -195,7 +198,7 @@ namespace LudumDareTextBasedGame
         public static void GetTargetStatus()
         {
             Console.WriteLine(currentEvent.targetName + " has " + currentEvent.targetHealth.ToString() + " health.");
-            GetInput();
+            GetInput(false);
         }
 
         /// <summary>
@@ -214,7 +217,7 @@ namespace LudumDareTextBasedGame
             {
                 Console.WriteLine("Oh no! You don't have that weapon! In all confusion you hit yourself with a pointy stick.");
                 player.GetDamage(1);
-                GetInput();
+                GetInput(true);
             }
             else
             {
@@ -222,16 +225,16 @@ namespace LudumDareTextBasedGame
             }
 
             // Check if the enemy is dead or not
-            if (dmgResult == 0)
+            if (dmgResult == false)
             {
                 player.xp += currentEvent.targetBaseHealth;
                 player.money += currentEvent.targetBaseHealth / 2;
                 Console.WriteLine("You got " + currentEvent.targetBaseHealth.ToString() + " xp and " + (currentEvent.targetBaseHealth / 2).ToString() + " gold coins");
                 return;
             }
-            else if (dmgResult == 1)
+            else if (dmgResult == true)
             {
-                GetInput();
+                GetInput(true);
             }
         }
 
