@@ -280,7 +280,7 @@ namespace LudumDareTextBasedGame
             {
                 player.xp += currentEvent.targetBaseHealth;
                 player.money += currentEvent.targetBaseHealth / 2;
-                Console.WriteLine("You received " + currentEvent.targetBaseHealth.ToString() + " XP and " + (currentEvent.targetBaseHealth / 2).ToString() + " gold coins");
+                Console.WriteLine("You got " + currentEvent.targetBaseHealth.ToString() + " XP and " + (currentEvent.targetBaseHealth / 2).ToString() + " gold coins");
                 return;
             }
             else if (dmgResult == true)
