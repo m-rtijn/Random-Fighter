@@ -214,7 +214,7 @@ namespace LudumDareTextBasedGame
                 }
                 else
                 {
-                    Console.WriteLine(_weapon + " is not a weapon you own. Type list to see the weapons you own.");
+                    Console.WriteLine(InputWeapon + " is not a weapon you own. Type list to see the weapons you own.");
                     return Tuple.Create(false, 0);
                 }
             }
