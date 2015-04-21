@@ -13,7 +13,7 @@ namespace LudumDareTextBasedGame
         public string eventText;
         public string targetName;
 
-        public Event(string inputEventText, int inputTargetHealth, string inputTargetName = "the target")
+        public Event(string inputEventText, int inputTargetHealth, string inputTargetName = "The Target")
         {
             targetHealth = inputTargetHealth;
             targetBaseHealth = inputTargetHealth;
@@ -31,7 +31,7 @@ namespace LudumDareTextBasedGame
         public int GetDamage(int dmg, string weapon)
         {
             targetHealth -= dmg;
-            Console.WriteLine("You hit " + targetName + " with " + weapon);
+            Console.WriteLine("You hit " + targetName + " with " + weapon + ".");
             Console.WriteLine(targetName + " got " + dmg.ToString() + " damage.");
 
             if (targetHealth <= 0)
