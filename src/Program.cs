@@ -9,47 +9,45 @@ namespace LudumDareTextBasedGame
 {
     class Program
     {
-
         #region Main game things and main game loop
 
-        // I stil need to come up with one
-        private static string gameTitle = "Random Fighter";
         private static Player player;
-        public static Event currentEvent;
-        public static Random random = new Random();
+        private static Event currentEvent;
+        private static Random random = new Random();
         private static bool dmgResult;
         private static int currentSeed;
 
+        #region Scenarios, target names, and attack names
         // These are all the available scenario's
         public static string[] eventTexts = new string[] { 
-            "You are ambushed by five little monkeys!"
-                , "An unicorn blocks the path!"
-                , "A crazy sysadmin tries to choke you with a CAT 5e calbe!"
-                , "An open source enthousiast tries to confince you of the benefits of the GPLv3+ license!" 
-                , "A Pokémon trainer challenges you to a battle!"
-                , "A console peasant attempts to hit you with his old PS1!"
-                , "An exhausted Ludum Dare programmer tries to eat you, muttering \"Don't fight me delicious pizza\"!"};
+            "You are ambushed by five little monkeys!",
+            "An unicorn blocks the path!",
+            "A crazy sysadmin tries to choke you with a CAT 5e calbe!",
+            "An open source enthousiast tries to confince you of the benefits of the GPLv3+ license!",
+            "A Pokémon trainer challenges you to a battle!",
+            "A console peasant attempts to hit you with his old PS1!",
+            "An exhausted Ludum Dare programmer tries to eat you, muttering \"Don't fight me delicious pizza\"!"};
         public static string[] eventTargetNames = new string[] { 
-            "the five little monkeys"
-            , "the unicorn"
-            , "the crazy sysadmin" 
-            , "the open source enthousiast"
-            , "the Pokémon trainer"
-            , "the console peasant"
-            , "the exhausted programmer"};
+            "The Five Little Monkeys",
+            "The Unicorn",
+            "The Crazy Sysadmin",
+            "The Open Source Enthousiast",
+            "The Pokémon Trainer",
+            "The Console Peasant",
+            "The Exhausted Programmer"};
         public static string[] eventAttackNames = new string[] { 
-            "The monkeys are throwing nuts at you!"
-                , "The unicorn blinds you with his majesty."
-                , "The crazy sysadmin still tries to choke you with a CAT 5e cable!"
-                , "The open source enthousiast bores you with his arguments"
-                , "The Pokémon trainer commands his Pikachu to electrocute you!"
-                , "The console peasant hits you again, stating that \"A console has a better cinematic experience\""
-                , "The exhausted programmer bites you, while muttering something about being hungry."};
+            "The monkeys are throwing nuts at you!",
+            "The unicorn blinds you with his majesty.",
+            "The crazy sysadmin still tries to choke you with a CAT 5e cable!",
+            "The open source enthousiast bores you with his arguments",
+            "The Pokémon trainer commands his Pikachu to electrocute you!",
+            "The console peasant hits you again, stating that \"A console has a better cinematic experience\"",
+            "The exhausted programmer bites you, while muttering something about being hungry."};
+        #endregion
 
         public static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to " + gameTitle);
-            
+            Console.WriteLine("Welcome to Random Fighter");
             Console.WriteLine("What is your name?");
             Console.Write(">");
             string name = Console.ReadLine();
@@ -202,15 +200,68 @@ namespace LudumDareTextBasedGame
         }
 
         /// <summary>
+        /// Checks to see if the weapon is actually a weapon, and if so attacks
+        /// </summary>
+        /// <param name="InputWeapon">The weapon the user entered</param>
+        /// <returns>Damage done</returns>
+        public static Tuple<bool, int> TryAttack(string InputWeapon)
+        {
+            foreach (string _weapon in player.weapons)
+            {
+                if (InputWeapon == _weapon)
+                {
+                    return Tuple.Create(true, player.DoMove(_weapon));
+                }
+                else
+                {
+                    Console.WriteLine(_weapon + " is not a weapon you own. Type list to see the weapons you own.");
+                    return Tuple.Create(false, 0);
+                }
+            }
+
+            throw new Exception("No weapons exist.");
+        }
+
+        /// <summary>
         /// Let the player attack. The dmg of the attack depends on the Player's current xp.
         /// </summary>
         public static void Attack()
         {
-            // Get the weapon the player wants to use and get the dmg
-            Console.WriteLine("Which weapon do you want to use?");
-            Console.Write(">");
-            string weapon = Console.ReadLine();
-            int dmg = player.DoMove(weapon);
+            bool attackDone = false;
+            int dmg = 0;
+            string weapon = "";
+
+            while (!attackDone)
+            {
+                // Get the weapon the player wants to use and get the dmg
+                Console.WriteLine("Which weapon do you want to use? Type list to show your availible weapons");
+                Console.Write(">");
+                weapon = Console.ReadLine();
+
+                if (weapon.ToLower() == "list")
+                {
+                    Console.WriteLine("\nAvailible Weapons:");
+
+                    foreach (string _weapon in player.weapons) {
+                        Console.WriteLine(_weapon);
+                    }
+
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Tuple<bool, int> AttackTry = TryAttack(weapon);
+
+                    if (AttackTry.Item1)
+                    {
+                        attackDone = true;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
 
             // Do the move (or don't when the player doesn't have the weapon (yet))
             if (dmg == -1)
@@ -229,7 +280,7 @@ namespace LudumDareTextBasedGame
             {
                 player.xp += currentEvent.targetBaseHealth;
                 player.money += currentEvent.targetBaseHealth / 2;
-                Console.WriteLine("You got " + currentEvent.targetBaseHealth.ToString() + " xp and " + (currentEvent.targetBaseHealth / 2).ToString() + " gold coins");
+                Console.WriteLine("You received " + currentEvent.targetBaseHealth.ToString() + " XP and " + (currentEvent.targetBaseHealth / 2).ToString() + " gold coins");
                 return;
             }
             else if (dmgResult == true)
@@ -293,11 +344,10 @@ namespace LudumDareTextBasedGame
 
             Console.WriteLine("    ||   \n ===RIP=== \n    ||   \n    ||   ");
             Console.WriteLine("SCORE: " + player.xp.ToString());
-            Console.Write("<press enter to exit>");
+            Console.Write("<Press enter to exit>");
             Console.ReadLine();
             Environment.Exit(0);
         }
-
         #endregion
 
         #region other things
