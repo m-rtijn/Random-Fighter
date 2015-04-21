@@ -49,11 +49,11 @@ namespace LudumDareTextBasedGame
         {
             Console.WriteLine("Welcome to Random Fighter");
             Console.WriteLine("What is your name?");
-            Console.Write("> ");
+            Console.Write(">");
             string name = Console.ReadLine();
 
             Console.WriteLine("What is your first weapon?");
-            Console.Write("> ");
+            Console.Write(">");
             string weapon = Console.ReadLine();
 
             player = new Player(name, weapon);
@@ -70,7 +70,7 @@ namespace LudumDareTextBasedGame
         public static void LoopMethod()
         {
             Console.WriteLine("Do you want to: \n 1) Continue walking \n 2) Buy a new weapon (100 Gold Coins) \n 3) Heal (100 Gold Coins) \n 4) Get status");
-            Console.Write("> ");
+            Console.Write(">");
             string choice = Console.ReadLine();
 
             switch(choice.ToLower())
@@ -109,7 +109,7 @@ namespace LudumDareTextBasedGame
             else
             {
                 Console.WriteLine("Which weapon do you want to buy?");
-                Console.Write("> ");
+                Console.Write(">");
                 string newWeapon = Console.ReadLine();
 
                 player.weapons.Add(newWeapon);
@@ -151,7 +151,7 @@ namespace LudumDareTextBasedGame
             }
             CheckDead();
             Console.WriteLine("What do you want to do? \n 1) Attack \n 2) Get player status \n 3) Get target status");
-            Console.Write("> ");
+            Console.Write(">");
             string choice = Console.ReadLine();
 
             switch(choice.ToLower())
@@ -234,7 +234,7 @@ namespace LudumDareTextBasedGame
             {
                 // Get the weapon the player wants to use and get the dmg
                 Console.WriteLine("Which weapon do you want to use? Type list to show your availible weapons");
-                Console.Write("> ");
+                Console.Write(">");
                 weapon = Console.ReadLine();
 
                 if (weapon.ToLower() == "list")
@@ -279,7 +279,7 @@ namespace LudumDareTextBasedGame
             {
                 player.xp += currentEvent.targetBaseHealth;
                 player.money += currentEvent.targetBaseHealth / 2;
-                Console.WriteLine("You got " + currentEvent.targetBaseHealth.ToString() + " xp and " + (currentEvent.targetBaseHealth / 2).ToString() + " gold coins");
+                Console.WriteLine("You received " + currentEvent.targetBaseHealth.ToString() + " XP and " + (currentEvent.targetBaseHealth / 2).ToString() + " gold coins");
                 return;
             }
             else if (dmgResult == true)
@@ -343,7 +343,7 @@ namespace LudumDareTextBasedGame
 
             Console.WriteLine("    ||   \n ===RIP=== \n    ||   \n    ||   ");
             Console.WriteLine("SCORE: " + player.xp.ToString());
-            Console.Write("<Press 'enter' to exit>");
+            Console.Write("<Press enter to exit>");
             Console.ReadLine();
             Environment.Exit(0);
         }
